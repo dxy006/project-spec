@@ -1,0 +1,40 @@
+#!/bin/sh
+
+echo "Hello PetaLinux World"
+
+DAEMON=/usr/bin/swcode
+start ()
+{
+	echo " Starting myapp"
+#	ifup eth0
+#	ifconfig eth0 192.168.7.2 netmask 255.255.255.0
+#	ifconfig
+#	cat /proc/mtd
+#    mv /usr/bin/fwprintenv /usr/bin/fw_setenv
+#	cd /usr/bin/
+	#start-stop-daemon -S -o -x $DAEMON
+}
+stop ()
+{
+	echo " Stoping myapp"
+	#start-stop-daemon -K -x $DAEMON
+}
+restart()
+{
+	stop
+	start
+}
+[ -e $DAEMON ] || exit 1
+case "$1" in
+	start)
+		start; ;;
+	stop)
+		stop; ;;
+	restart)
+		restart; ;;
+	*)
+		echo "Usage: $0 {start|stop|restart}"
+		exit 1
+esac
+exit $?
+

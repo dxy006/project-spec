@@ -1,0 +1,28 @@
+/include/ "system-conf.dtsi"
+/ {
+};
+&gem0 {
+    status = "okay";
+    phy-handle = <&phy7>;
+    phy-mode = "sgmii";
+    phy7: phy@7{
+        reg = <7>;
+        ti,rx-internal-delay = <0x8>;
+        ti,tx-internal-delay = <0xa>;
+        ti,fifo-depth = <0x1>;
+        ti,rxctrl-strap-worka;
+    };
+};
+
+&uart0{
+	status = "okay";
+	/delete-property/ pinctrl-0;
+	/delete-property/ pinctrl-name;
+};
+
+&qspi {
+	flash0: flash@0 {
+		spi-max-frequency = <50000000>;
+	};
+};
+
